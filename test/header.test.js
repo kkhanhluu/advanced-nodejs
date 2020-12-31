@@ -9,8 +9,20 @@ beforeEach(async () => {
   await page.goto('http://127.0.0.1:3000');
 });
 
-test('We can launch a browser', async () => {
+afterEach(async () => {
+  await browser.close();
+});
+
+test('The header has the correct text', async () => {
   const text = await page.$eval('a.brand-logo', (el) => el.innerHTML);
 
   expect(text).toEqual('Blogster');
+});
+
+test('Clicking login starts oauth flow', async () => {
+  await page.click('.right a');
+
+  const url = await page.url();
+
+  expect(url).toMatch(/accounts\.google\.com/);
 });
