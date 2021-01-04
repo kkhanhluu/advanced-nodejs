@@ -33,6 +33,7 @@
   },
   "jest": {
     "verbose": true,
-    "testURL": "http://localhost/"
+    "testURL": "http://localhost/",
+    "setupTestFrameworkScriptFile": "./test/setup.js"
   }
 }
