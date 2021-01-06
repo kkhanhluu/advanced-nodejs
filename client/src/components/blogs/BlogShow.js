@@ -7,6 +7,14 @@ class BlogShow extends Component {
     this.props.fetchBlog(this.props.match.params._id);
   }
 
+  renderImage() {
+    return this.props.blog.imageUrl ? (
+      <img
+        src={`https://advancednodejs.blob.core.windows.net/blog-post/${this.props.blog.imageUrl}`}
+      />
+    ) : null;
+  }
+
   render() {
     if (!this.props.blog) {
       return '';
@@ -18,6 +26,7 @@ class BlogShow extends Component {
       <div>
         <h3>{title}</h3>
         <p>{content}</p>
+        {this.renderImage()}
       </div>
     );
   }
